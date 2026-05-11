@@ -13,6 +13,7 @@ use App\Http\Controllers\Sales\SalesOrderController;
 use App\Http\Controllers\Suppliers\SupplierController;
 use App\Http\Controllers\Suppliers\PurchaseOrderController;
 use App\Http\Controllers\Suppliers\PriceImportController;
+use App\Http\Controllers\Reports\ReportController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -131,6 +132,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/{session}/cerrar',             [CashController::class, 'close'])->name('close');
         Route::post('/{session}/movimiento',         [CashController::class, 'addMovement'])->name('movement');
         Route::get('/{session}',                     [CashController::class, 'show'])->name('show');
+    });
+
+    // Reportes
+    Route::prefix('reportes')->name('reports.')->group(function () {
+        Route::get('/',              [ReportController::class, 'index'])->name('index');
+        Route::get('/{type}/exportar', [ReportController::class, 'export'])->name('export');
     });
 
     // Configuración — solo admin
