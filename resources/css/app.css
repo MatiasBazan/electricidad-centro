@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+    --color-naranja:       #F58220;
+    --color-naranja-dark:  #d9701a;
+    --color-naranja-light: #fef3e8;
+    --color-fondo:         #F4F4F4;
+    --color-texto:         #2B2B2B;
+    --color-gris:          #D3D3D3;
+    --color-gris-dark:     #9ca3af;
+    --color-azul:          #2D4C73;
+    --color-azul-dark:     #1f3550;
+    --color-cobre:         #B87333;
+}
+
+*, *::before, *::after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar sidebar */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: rgba(255,255,255,0.15); border-radius: 99px; }
