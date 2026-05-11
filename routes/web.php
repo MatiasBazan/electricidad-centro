@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Cash\CashController;
 use App\Http\Controllers\Products\CategoryController;
 use App\Http\Controllers\Products\BrandController;
 use App\Http\Controllers\Products\ProductController;
@@ -110,6 +111,15 @@ Route::middleware('auth')->group(function () {
         Route::get('/{purchaseOrder}',               [PurchaseOrderController::class, 'show'])->name('show');
         Route::post('/{purchaseOrder}/recepcionar',  [PurchaseOrderController::class, 'receive'])->name('receive');
         Route::patch('/{purchaseOrder}/estado',      [PurchaseOrderController::class, 'updateStatus'])->name('status');
+    });
+
+    // Caja
+    Route::prefix('caja')->name('cash.')->group(function () {
+        Route::get('/',                              [CashController::class, 'index'])->name('index');
+        Route::post('/abrir',                        [CashController::class, 'open'])->name('open');
+        Route::post('/{session}/cerrar',             [CashController::class, 'close'])->name('close');
+        Route::post('/{session}/movimiento',         [CashController::class, 'addMovement'])->name('movement');
+        Route::get('/{session}',                     [CashController::class, 'show'])->name('show');
     });
 
     // Configuración — solo admin
