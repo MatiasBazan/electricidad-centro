@@ -12,6 +12,7 @@ use App\Http\Controllers\Sales\QuotationController;
 use App\Http\Controllers\Sales\SalesOrderController;
 use App\Http\Controllers\Suppliers\SupplierController;
 use App\Http\Controllers\Suppliers\PurchaseOrderController;
+use App\Http\Controllers\Suppliers\PriceImportController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -111,6 +112,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/{purchaseOrder}',               [PurchaseOrderController::class, 'show'])->name('show');
         Route::post('/{purchaseOrder}/recepcionar',  [PurchaseOrderController::class, 'receive'])->name('receive');
         Route::patch('/{purchaseOrder}/estado',      [PurchaseOrderController::class, 'updateStatus'])->name('status');
+    });
+
+    // Importación de precios
+    Route::prefix('importacion')->name('imports.')->group(function () {
+        Route::get('/',                               [PriceImportController::class, 'index'])->name('index');
+        Route::post('/configs',                       [PriceImportController::class, 'storeConfig'])->name('configs.store');
+        Route::put('/configs/{config}',               [PriceImportController::class, 'updateConfig'])->name('configs.update');
+        Route::delete('/configs/{config}',            [PriceImportController::class, 'destroyConfig'])->name('configs.destroy');
+        Route::post('/configs/{config}/importar',     [PriceImportController::class, 'upload'])->name('upload');
+        Route::get('/logs/{log}',                     [PriceImportController::class, 'showLog'])->name('logs.show');
     });
 
     // Caja
