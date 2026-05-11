@@ -14,6 +14,7 @@ use App\Http\Controllers\Suppliers\SupplierController;
 use App\Http\Controllers\Suppliers\PurchaseOrderController;
 use App\Http\Controllers\Suppliers\PriceImportController;
 use App\Http\Controllers\Reports\ReportController;
+use App\Http\Controllers\Invoicing\InvoiceController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -132,6 +133,16 @@ Route::middleware('auth')->group(function () {
         Route::post('/{session}/cerrar',             [CashController::class, 'close'])->name('close');
         Route::post('/{session}/movimiento',         [CashController::class, 'addMovement'])->name('movement');
         Route::get('/{session}',                     [CashController::class, 'show'])->name('show');
+    });
+
+    // Facturación AFIP
+    Route::prefix('facturacion')->name('invoices.')->group(function () {
+        Route::get('/',                       [InvoiceController::class, 'index'])->name('index');
+        Route::get('/crear',                  [InvoiceController::class, 'create'])->name('create');
+        Route::post('/',                      [InvoiceController::class, 'store'])->name('store');
+        Route::get('/{invoice}',              [InvoiceController::class, 'show'])->name('show');
+        Route::get('/{invoice}/pdf',          [InvoiceController::class, 'pdf'])->name('pdf');
+        Route::post('/{invoice}/anular',      [InvoiceController::class, 'cancel'])->name('cancel');
     });
 
     // Reportes

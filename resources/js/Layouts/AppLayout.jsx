@@ -1,7 +1,7 @@
 import { Link, router, usePage } from '@inertiajs/react';
 import {
     LayoutDashboard, Package, ShoppingCart, Truck,
-    Users, Building2, Wallet, BarChart2, Settings, LogOut, ChevronRight, FolderOpen, FileUp,
+    Users, Building2, Wallet, BarChart2, Settings, LogOut, ChevronRight, FolderOpen, FileUp, Receipt,
 } from 'lucide-react';
 
 const NAV_ITEMS = [
@@ -14,6 +14,7 @@ const NAV_ITEMS = [
     { label: 'Proveedores',   href: '/proveedores',    icon: Building2       },
     { label: 'Caja',          href: '/caja',           icon: Wallet          },
     { label: 'Importar precios', href: '/importacion',  icon: FileUp          },
+    { label: 'Facturación',   href: '/facturacion',    icon: Receipt         },
     { label: 'Reportes',      href: '/reportes',       icon: BarChart2       },
     { label: 'Configuración', href: '/configuracion/usuarios', icon: Settings },
 ];
