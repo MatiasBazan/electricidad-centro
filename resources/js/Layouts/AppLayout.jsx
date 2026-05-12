@@ -1,15 +1,16 @@
 import { Link, router, usePage } from '@inertiajs/react';
 import {
     LayoutDashboard, Package, ShoppingCart, Truck,
-    Users, Building2, Wallet, BarChart2, Settings, LogOut, ChevronRight, FolderOpen, FileUp, Receipt,
+    Users, Building2, Wallet, BarChart2, Settings, LogOut, ChevronRight, FolderOpen, FileUp, Receipt, ClipboardList,
 } from 'lucide-react';
 
 const NAV_ITEMS = [
-    { label: 'Inicio',        href: '/dashboard',     icon: LayoutDashboard },
-    { label: 'Productos',     href: '/productos',      icon: Package         },
-    { label: 'Categorías',    href: '/categorias',     icon: FolderOpen      },
-    { label: 'Ventas',        href: '/ventas',         icon: ShoppingCart    },
-    { label: 'Compras',       href: '/compras',        icon: Truck           },
+    { label: 'Inicio',           href: '/dashboard',          icon: LayoutDashboard },
+    { label: 'Productos',        href: '/productos',           icon: Package         },
+    { label: 'Categorías',       href: '/categorias',          icon: FolderOpen      },
+    { label: 'Presupuestos',     href: '/presupuestos',        icon: ClipboardList   },
+    { label: 'Ventas',           href: '/ventas',              icon: ShoppingCart    },
+    { label: 'Compras',          href: '/compras',             icon: Truck           },
     { label: 'Clientes',      href: '/clientes',       icon: Users           },
     { label: 'Proveedores',   href: '/proveedores',    icon: Building2       },
     { label: 'Caja',          href: '/caja',           icon: Wallet          },

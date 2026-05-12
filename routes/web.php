@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Cash\CashController;
 use App\Http\Controllers\Products\CategoryController;
 use App\Http\Controllers\Products\BrandController;
@@ -31,7 +32,7 @@ Route::post('/logout', [AuthController::class, 'logout'])
 
 // Rutas protegidas
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Productos
     Route::prefix('productos')->name('products.')->group(function () {
